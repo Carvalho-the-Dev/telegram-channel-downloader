@@ -25,8 +25,8 @@ const {
   selectInput,
 } = require("../utils/input-helper");
 
-const MAX_PARALLEL_DOWNLOAD = 5;
-const MESSAGE_LIMIT = 10;
+const MAX_PARALLEL_DOWNLOAD = 2;
+const MESSAGE_LIMIT = 250;
 
 /**
  * Handles downloading media from a Telegram channel
