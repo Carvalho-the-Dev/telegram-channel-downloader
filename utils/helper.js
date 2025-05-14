@@ -71,7 +71,7 @@ const checkFileExist = (message, outputFolder) => {
         (e) => e.className === "DocumentAttributeFilename"
       );
       if (fileNameObj) {
-        fileName = fileNameObj.fileName;
+        fileName = media.document.date + "_" + fileNameObj.fileName;
       } else {
         const ext = mimeDB[media.document.mimeType]?.extensions[0];
         if (ext) fileName += `.${ext}`;
@@ -97,13 +97,14 @@ const getMediaPath = (message, outputFolder) => {
   const { media } = message;
 
   if (media.document) {
+
     const docAttributes = media.document.attributes;
     if (docAttributes) {
       const fileNameObj = docAttributes.find(
         (e) => e.className === "DocumentAttributeFilename"
       );
       if (fileNameObj) {
-        fileName = fileNameObj.fileName;
+        fileName = media.document.date + "_" + fileNameObj.fileName;
       } else {
         const ext = mimeDB[media.document.mimeType]?.extensions[0];
         if (ext) fileName += `.${ext}`;
@@ -143,7 +144,7 @@ const getDialogType = (dialog) => {
 
 // Logging utility
 const logMessage = {
-  info: (message, icon=true) => {
+  info: (message, icon = true) => {
     console.log(`📢: ${consoleColors.magenta}${message}${consoleColors.reset}`);
   },
   error: (message) => {
